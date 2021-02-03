@@ -22,13 +22,14 @@ notFoundFiles = 0
 
 __version__ = 0.5
 
-def getDir(path):
-    dirpath = path
+def getDir():
+    dirpath = input(f"{infoStr} Give the path of your music directory: ")
     if os.path.isdir(dirpath):
         return dirpath
     else:
-        print(colored("[⚠] Whoops! There was an error on the path, it doesn't exist or you forgot to put it!. \nTry again executing the program like this: python3 banyl.py [PATH]", 'red'))
-        sys.exit(0)
+        print(colored("[⚠] Whoops! There was an error on the path, it doesn't exist.", 'red'))
+        dirpath = getDir()
+        return dirpath
 
 
 def checkSong(userRequest):
@@ -140,15 +141,8 @@ def main():
         initWelcome()
 
         separator('cyan')
-
-        argNum = 0
-        for arg in sys.argv:
-            argNum += 1
         
-        if argNum >= 2:
-            songsDir = getDir(sys.argv[1])
-        else:
-            songsDir = getDir(False)
+        songsDir = getDir()
         
         editTags(songsDir)
         print(colored('[✔] All the music files was edited. Done!', 'green'))

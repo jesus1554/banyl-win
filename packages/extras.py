@@ -24,3 +24,5 @@ def initWelcome():
     print('Twitter: @jesus_twalter')
     print('\n')
     print('Hey!👋 This is Banyl, an easy-to-use tool to complete all the tags in your music catalog')
+    separator('white')
+    print(f"{warningStr} WARNING! If you want to paste the path of your music directory. Don't do it using \"Control + V\", instead use the right click of your mouse")
