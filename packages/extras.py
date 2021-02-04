@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from termcolor import colored
+from colorama import init
 
 infoStr    = colored('[i]', 'blue')
-warningStr = colored('[⚠]', 'yellow')
-dangerStr  = colored('[⚠]', 'red')
-successStr = colored('[✔]', 'green')
+warningStr = colored('[■]', 'yellow')
+dangerStr  = colored('[■]', 'red')
+successStr = colored('[■]', 'green')
 
 def separator(color, char="="):
     return print(colored(f"{char}" * 70, color))
@@ -23,6 +24,7 @@ def initWelcome():
     print('Created by: github.com/jesus1554')
     print('Twitter: @jesus_twalter')
     print('\n')
-    print('Hey!👋 This is Banyl, an easy-to-use tool to complete all the tags in your music catalog')
+    print('Hey! This is Banyl, an easy-to-use tool to complete all the tags in your music catalog')
     separator('white')
-    print(f"{warningStr} WARNING! If you want to paste the path of your music directory. Don't do it using \"Control + V\", instead use the right click of your mouse")
+    print(f'{warningStr} "Control + C" To exit')
+    print(f"{infoStr} TIP! To make the process easier you can copy and paste the path of your music directory here!")

@@ -13,6 +13,7 @@ import eyed3
 import requests
 import wget
 from termcolor import colored
+from colorama import init
 
 from packages.extras import *
 
@@ -22,12 +23,15 @@ notFoundFiles = 0
 
 __version__ = 0.5
 
+# Colorama Init
+init()
+
 def getDir():
-    dirpath = input(f"{infoStr} Give the path of your music directory: ")
+    dirpath = input(f'[i] Give the path of your music directory and then hit ENTER: ')
     if os.path.isdir(dirpath):
         return dirpath
     else:
-        print(colored("[⚠] Whoops! There was an error on the path, it doesn't exist.", 'red'))
+        print(colored("[■] Whoops! There was an error on the path, it doesn't exist.", 'red'))
         dirpath = getDir()
         return dirpath
 
@@ -39,7 +43,7 @@ def checkSong(userRequest):
         f'https://api.deezer.com/search?q="{userRequest}"')
     res = json.loads(rawResponse.text)
     if res["total"] == 0:
-        print(colored("[⚠] Song not found :(", 'red'))
+        print(colored("[■] Song not found :(", 'red'))
         notFoundFiles += 1
         return False
     else:
@@ -141,11 +145,11 @@ def main():
         initWelcome()
 
         separator('cyan')
-        
+
         songsDir = getDir()
         
         editTags(songsDir)
-        print(colored('[✔] All the music files was edited. Done!', 'green'))
+        print(colored('[■] All the music files was edited. Done!', 'green'))
         print(f'{successStr} {successFiles} was correctly edited.')
         print(f'{warningStr} {ignoredFiles} was ignored.')
         print(f'{dangerStr} {notFoundFiles} was not found.')
